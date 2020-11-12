@@ -1,11 +1,16 @@
 import os
 from decouple import config, Csv
 
+ENVIRONMENT='DEVELOPMENT'
+SECRET_KEY='3q*=5%_@6#(d!4$o=-2$3=gf0!*6tt*_@d-u_&-+_s@w35*-_x'
+
+DJANGO_TEMPLATE_DEBUG='yes'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+SECRET_KEY = SECRET_KEY
+DEBUG = True
+ALLOWED_HOSTS = ['127.0.0.1']
 
 SOLITONEMS_APPS = [
     'recruitment',
@@ -109,7 +114,7 @@ AUTHENTICATION_BACKENDS = ['ems_auth.backends.EmailBackend']
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Africa/Kampala'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -121,15 +126,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/solitonug/solitonEMS/static'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-EMAIL_HOST = config("EMAIL_HOST")
-EMAIL_HOST_USER = config("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = config("SENDGRID_API_KEY")
-FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
-DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
-EMAIL_PORT = config("EMAIL_PORT")
-EMAIL_USE_TLS = config("EMAIL_USE_TLS")
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ankit.see@gmail.com'
+EMAIL_HOST_PASSWORD = 'Security_1998'
+FROM_EMAIL = 'ankit.see@gmail.com'
+DEFAULT_FROM_EMAIL = 'ankit.see@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
